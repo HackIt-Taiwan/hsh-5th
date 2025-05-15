@@ -24,7 +24,7 @@ const CallToAction: React.FC = () => {
             <Button 
               variant="outline"
               size="lg" 
-              className="border-white text-white hover:bg-white/10 text-lg px-8 rounded-full"
+              className="border-white text-white hover:text-white bg-white/10 hover:bg-white/20 text-lg px-8 rounded-full"
             >
               聯絡活動官方
             </Button>
