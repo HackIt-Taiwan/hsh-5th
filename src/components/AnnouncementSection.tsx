@@ -14,7 +14,7 @@ const AnnouncementSection: React.FC = () => {
           </h2>
           
           <div className="grid gap-6 mt-8">
-            <Card className="border-l-4 border-l-hackathon-pink shadow-sm card-hover">
+            <Card className="border-l-4 border-l-hackathon-pink shadow-sm">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="bg-hackathon-pink/10 p-3 rounded-full">
@@ -28,7 +28,7 @@ const AnnouncementSection: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-l-4 border-l-hackathon-blue shadow-sm card-hover">
+            <Card className="border-l-4 border-l-hackathon-blue shadow-sm">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="bg-hackathon-blue/10 p-3 rounded-full">
@@ -42,7 +42,7 @@ const AnnouncementSection: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-l-4 border-l-hackathon-purple shadow-sm card-hover">
+            <Card className="border-l-4 border-l-hackathon-purple shadow-sm">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="bg-hackathon-purple/10 p-3 rounded-full">
