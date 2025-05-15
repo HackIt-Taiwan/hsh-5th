@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -15,10 +14,9 @@ const HackathonHero: React.FC = () => {
     <div className="relative min-h-screen flex flex-col items-center justify-center text-center bg-gradient-hero overflow-hidden py-16">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-hackathon-pink opacity-20 animate-pulse-soft"></div>
         <div className="absolute bottom-10 left-10 w-60 h-60 rounded-full bg-hackathon-blue opacity-20 animate-float"></div>
-        <div className="absolute top-1/3 left-1/4 w-20 h-20 rounded-full border border-white opacity-10 animate-spin-slow"></div>
-        <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full border border-white opacity-10 animate-spin-slow" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/3 left-1/4 w-20 h-20 rounded-full border border-white opacity-10"></div>
+        <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full border border-white opacity-10"></div>
       </div>
       
       {/* Content */}
@@ -32,7 +30,7 @@ const HackathonHero: React.FC = () => {
           </span>
         </div>
         
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-8">
           第五屆中學生黑客松
           <span className="block text-hackathon-yellow">AI賦能 × 雲端創意</span>
         </h1>
@@ -47,14 +45,15 @@ const HackathonHero: React.FC = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="bg-white text-hackathon-purple hover:bg-white/90 text-lg px-8 rounded-full">
-            立即報名
+          <Button size="lg" className="bg-white text-hackathon-purple hover:bg-white/80 text-lg px-8 rounded-full" asChild>
+            <a href="https://w.wolf-yuan.dev/youtube" target="_blank">
+            立即報名</a>
           </Button>
           <Button 
             variant="outline" 
             size="lg" 
             onClick={scrollToContent}
-            className="border-white text-white hover:bg-white/10 text-lg px-8 rounded-full"
+            className="border-white text-white hover:text-white bg-white/10 hover:bg-white/20 text-lg px-8 rounded-full"
           >
             了解更多
           </Button>
