@@ -1,12 +1,25 @@
-// Update this page (the content is just a fallback if you fail to update the page)
 
-const Index = () => {
+import React from 'react';
+import HackathonHero from '@/components/HackathonHero';
+import AnnouncementSection from '@/components/AnnouncementSection';
+import EligibilitySection from '@/components/EligibilitySection';
+import ResourcesSection from '@/components/ResourcesSection';
+import ThemeSection from '@/components/ThemeSection';
+import MusicSection from '@/components/MusicSection';
+import CallToAction from '@/components/CallToAction';
+import Footer from '@/components/Footer';
+
+const Index: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <HackathonHero />
+      <AnnouncementSection />
+      <EligibilitySection />
+      <ThemeSection />
+      <ResourcesSection />
+      <MusicSection />
+      <CallToAction />
+      <Footer />
     </div>
   );
 };
