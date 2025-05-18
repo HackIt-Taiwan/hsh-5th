@@ -347,22 +347,17 @@ const Index: React.FC = () => {
 
               <div className="flex flex-wrap gap-8">
                 <div>
-                  <h4 className="font-bold mb-3">資源連結</h4>
+                  <h4 className="font-bold mb-3">相關連結</h4>
                   <ul className="space-y-2">
-                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">創意構想說明</a></li>
-                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">教師研習連結</a></li>
-                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">活動獎勵詳情</a></li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-bold mb-3">聯絡方式</h4>
-                  <ul className="space-y-2">
-                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">活動官方 Line</a></li>
-                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">電子郵件</a></li>
+                    <li><a href="https://sites.google.com/k12moocs.edu.tw/hsh/%E6%AD%B7%E5%B1%86%E6%B4%BB%E5%8B%95%E5%89%AA%E5%BD%B1?authuser=0" className="text-gray-400 hover:text-white transition-colors">歷屆活動剪影</a></li>
+                    <li><a href="https://line.me/R/ti/p/@659cnniv" className="text-gray-400 hover:text-white transition-colors">LINE 官方帳號</a></li>
                   </ul>
                 </div>
               </div>
+            </div>
+            
+            <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+              <p>© {new Date().getFullYear()} 中學生黑客松組委會. All rights reserved.</p>
             </div>
           </div>
         </div>
