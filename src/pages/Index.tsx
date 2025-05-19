@@ -44,7 +44,7 @@ const Index: React.FC = () => {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-8">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             {t.hero.title}
             <span className="block text-hackathon-yellow">{t.hero.subtitle}</span>
           </h1>
@@ -344,7 +344,7 @@ const Index: React.FC = () => {
       <footer className="bg-gray-900 text-white py-10">
         <div className="container px-4 sm:px-6">
           <div className="max-w-5xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-2 md:px-0">
               <div>
                 <h3 className="text-xl font-bold mb-2">{t.hero.title}</h3>
                 <p className="text-gray-400">{t.hero.subtitle}</p>
