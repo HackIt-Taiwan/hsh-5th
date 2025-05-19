@@ -1,23 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Bell, CalendarCheck, ArrowDown, Users, FileText, FileCheck, FileWarning,
-  Lightbulb, Video, Globe, Award, Music, Play, Pause, ArrowRight
+  Lightbulb, Video, Globe, Award, Music, ArrowRight
 } from 'lucide-react';
-
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { useLanguage } from '@/i18n/LanguageContext';
 import news from '@/news';
 
-const thisNews = news.ch;
-
 const Index: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const { locale, t } = useLanguage();
+  
+  const currentNews = locale === 'en' ? news.en : news.ch;
 
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-  };
-
-  // For HackathonHero
   const scrollToContent = () => {
     const contentElement = document.getElementById('announcement');
     if (contentElement) {
@@ -34,6 +30,10 @@ const Index: React.FC = () => {
           <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full border border-white opacity-10"></div>
         </div>
 
+        <div className="absolute top-4 right-4 z-10">
+          <LanguageSwitcher />
+        </div>
+
         <div className="container relative z-10 px-4 sm:px-6 max-w-5xl">
           <div className="flex items-center justify-center gap-2 mb-5">
             <span className="inline-block p-3 bg-white/10 rounded-full backdrop-blur-sm">
@@ -45,23 +45,22 @@ const Index: React.FC = () => {
           </div>
 
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-8">
-            第五屆中學生黑客松
-            <span className="block text-hackathon-yellow">AI賦能 × 雲端創意</span>
+            {t.hero.title}
+            <span className="block text-hackathon-yellow">{t.hero.subtitle}</span>
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
-            一起站上巨人肩膀，啟動你的創意挑戰！
+            {t.hero.description}
           </p>
 
           <p className="text-lg mb-10 text-white/80 max-w-2xl mx-auto">
-            歡迎全台國中、高中職學生組隊參加「第五屆中學生黑客松」！
-            透過雲端資源與AI賦能，打造你的創意應用，和夥伴一起挑戰現實、連結世界！
+            {t.hero.welcome}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-hackathon-purple hover:bg-white/80 text-lg px-8 rounded-full" asChild>
-              <a href="https://w.wolf-yuan.dev/youtube" target="_blank">
-                立即報名</a>
+              <a href="https://discord.gg/KGwQxZqp9z" target="_blank">
+                {t.hero.discord}</a>
             </Button>
             <Button
               variant="outline"
@@ -69,7 +68,7 @@ const Index: React.FC = () => {
               onClick={scrollToContent}
               className="border-white text-white hover:text-white bg-white/10 hover:bg-white/20 text-lg px-8 rounded-full"
             >
-              了解更多
+              {t.hero.learnMore}
             </Button>
           </div>
         </div>
@@ -84,11 +83,11 @@ const Index: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="section-title flex items-center gap-2">
               <Bell className="h-8 w-8 text-hackathon-pink" />
-              最新公告
+              {t.announcement.title}
             </h2>
 
             <div className="grid gap-6 mt-8">
-              {thisNews.map((item, index) => (
+              {currentNews.map((item, index) => (
                 <Card className="border-l-4 border-l-hackathon-blue shadow-sm" key={index}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
@@ -112,60 +111,57 @@ const Index: React.FC = () => {
         <div className="container px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="section-title text-center mb-10">
-              <span className="highlight-text">報名條件與參賽資訊</span>
+              <span className="highlight-text">{t.eligibility.title}</span>
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {/* Team Formation */}
               <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-hackathon-purple/10 rounded-xl">
                     <Users className="h-7 w-7 text-hackathon-purple" />
                   </div>
-                  <h3 className="text-xl font-bold">組隊方式</h3>
+                  <h3 className="text-xl font-bold">{t.eligibility.teamFormation.title}</h3>
                 </div>
                 <p className="text-gray-600">
-                  2～4位學生／可有 0～2 位指導老師
+                  {t.eligibility.teamFormation.description}
                 </p>
               </div>
 
-              {/* Submission Requirements */}
               <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-hackathon-blue/10 rounded-xl">
                     <FileText className="h-7 w-7 text-hackathon-blue" />
                   </div>
-                  <h3 className="text-xl font-bold">提交內容</h3>
+                  <h3 className="text-xl font-bold">{t.eligibility.submission.title}</h3>
                 </div>
                 <ul className="text-gray-600 space-y-2">
-                  <li>• 一頁 300 字以上的「創意構想」</li>
-                  <li>• 一頁「圖像示意」（手繪、火柴人風格皆可，不評美術）</li>
+                  {t.eligibility.submission.items.map((item, index) => (
+                    <li key={index}>• {item}</li>
+                  ))}
                 </ul>
               </div>
 
-              {/* AI Collaboration */}
               <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-hackathon-orange/10 rounded-xl">
                     <FileCheck className="h-7 w-7 text-hackathon-orange" />
                   </div>
-                  <h3 className="text-xl font-bold">AI 協作說明</h3>
+                  <h3 className="text-xl font-bold">{t.eligibility.aiCollaboration.title}</h3>
                 </div>
                 <p className="text-gray-600">
-                  可使用 AI，但需由人類主導創作，並繳交「AI協作切結書」
+                  {t.eligibility.aiCollaboration.description}
                 </p>
               </div>
 
-              {/* Underage Participants */}
               <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-hackathon-pink/10 rounded-xl">
                     <FileWarning className="h-7 w-7 text-hackathon-pink" />
                   </div>
-                  <h3 className="text-xl font-bold">18 歲以下成員</h3>
+                  <h3 className="text-xl font-bold">{t.eligibility.underage.title}</h3>
                 </div>
                 <p className="text-gray-600">
-                  須繳交「家長監護人同意書」（每人一份）
+                  {t.eligibility.underage.description}
                 </p>
               </div>
             </div>
@@ -173,7 +169,6 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* ThemeSection */}
       <section className="py-16 bg-gradient-to-br from-hackathon-purple/90 to-hackathon-blue/90 text-white">
         <div className="container px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
@@ -181,21 +176,21 @@ const Index: React.FC = () => {
               <Lightbulb className="h-8 w-8" />
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">主題與重點</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">{t.theme.title}</h2>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-              <p className="text-xl mb-6">以生活化AI加值雲端應用為核心：</p>
+              <p className="text-xl mb-6">{t.theme.core}</p>
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="bg-white/10 p-5 rounded-xl">
                   <p className="text-lg">
-                    <span className="font-bold">📌</span> 聚焦於「食、衣、住、行、育、樂」等生活議題
+                    <span className="font-bold">📌</span> {t.theme.item1}
                   </p>
                 </div>
 
                 <div className="bg-white/10 p-5 rounded-xl">
                   <p className="text-lg">
-                    <span className="font-bold">📌</span> 創意應用結合 AI 與雲端資源（入圍後需明確標註平台）
+                    <span className="font-bold">📌</span> {t.theme.item2}
                   </p>
                 </div>
               </div>
@@ -204,71 +199,70 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* ResourcesSection */}
       <section className="py-16 bg-white">
         <div className="container px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="section-title text-center mb-3">
-              <span className="highlight-text">專為親師生設計的活動與資源</span>
+              <span className="highlight-text">{t.resources.title}</span>
             </h2>
 
             <p className="text-center text-gray-600 mb-10">
-              我們提供豐富的學習資源，協助您更好地準備與參與
+              {t.resources.subtitle}
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-gradient-to-b from-hackathon-purple/5 to-hackathon-blue/5">
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-gradient-to-b from-hackathon-purple/5 to-hackathon-blue/5 card-hover">
                 <div className="p-4 bg-hackathon-purple/10 rounded-full mb-4">
                   <Video className="h-6 w-6 text-hackathon-purple" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">活動影音簡報</h3>
-                <p className="text-gray-600 mb-4">活動說明與創意撰寫教學</p>
+                <h3 className="text-xl font-bold mb-2">{t.resources.videoTitle}</h3>
+                <p className="text-gray-600 mb-4">{t.resources.videoDesc}</p>
                 <Button variant="link" className="text-hackathon-purple mt-auto">
-                  觀看影片 →
+                  {t.resources.videoLink} →
                 </Button>
               </div>
 
-              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-gradient-to-b from-hackathon-blue/5 to-hackathon-pink/5">
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-gradient-to-b from-hackathon-blue/5 to-hackathon-pink/5 card-hover">
                 <div className="p-4 bg-hackathon-blue/10 rounded-full mb-4">
                   <Globe className="h-6 w-6 text-hackathon-blue" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">教師線上研習</h3>
-                <p className="text-gray-600 mb-4">不限領域、同步授課</p>
+                <h3 className="text-xl font-bold mb-2">{t.resources.workshopTitle}</h3>
+                <p className="text-gray-600 mb-4">{t.resources.workshopDesc}</p>
                 <Button variant="link" className="text-hackathon-blue mt-auto">
-                  研習報名連結 →
+                  {t.resources.workshopLink} →
                 </Button>
               </div>
 
-              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-gradient-to-b from-hackathon-pink/5 to-hackathon-purple/5">
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-gradient-to-b from-hackathon-pink/5 to-hackathon-purple/5 card-hover">
                 <div className="p-4 bg-hackathon-pink/10 rounded-full mb-4">
                   <Award className="h-6 w-6 text-hackathon-pink" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">活動獎勵詳情</h3>
-                <p className="text-gray-600 mb-4">豐富獎項與參賽證明</p>
+                <h3 className="text-xl font-bold mb-2">{t.resources.awardsTitle}</h3>
+                <p className="text-gray-600 mb-4">{t.resources.awardsDesc}</p>
                 <Button variant="link" className="text-hackathon-pink mt-auto">
-                  查看詳情 →
+                  {t.resources.awardsLink} →
                 </Button>
               </div>
             </div>
 
             <div className="bg-hackathon-yellow/20 p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold mb-4 text-center">🏆 你可以獲得…</h3>
+              <h3 className="text-2xl font-bold mb-4 text-center">{t.resources.rewardsTitle}</h3>
               <ul className="grid gap-4 md:grid-cols-2">
                 <li className="flex items-start gap-3">
                   <span className="text-xl">🎖️</span>
-                  <span>國教署獎狀（學生＆教師）</span>
+                  <span>{t.resources.rewards.certificate}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-xl">🎮</span>
-                  <span>任天堂遊戲機、筆電、平板、獎盃與獎金</span>
+                  <span>{t.resources.rewards.gaming}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-xl">🧑‍🎨</span>
-                  <span>Microsoft 一日見習生、參賽證明、修課證書</span>
+                  <span>{t.resources.rewards.internship}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-xl">🌏</span>
-                  <span>國際賽(APICTA)代表隊推薦資格！</span>
+                  <span>{t.resources.rewards.international}</span>
                 </li>
               </ul>
             </div>
@@ -276,7 +270,7 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="container px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
@@ -285,12 +279,12 @@ const Index: React.FC = () => {
                   <div className="p-3 bg-hackathon-pink/10 rounded-full">
                     <Music className="h-6 w-6 text-hackathon-pink" />
                   </div>
-                  <h3 className="text-2xl font-bold">活動主題曲</h3>
+                  <h3 className="text-2xl font-bold">{t.music.title}</h3>
                 </div>
 
-                <h4 className="text-xl font-bold mb-2">「夢想起飛 Dreams Take Flight」</h4>
+                <h4 className="text-xl font-bold mb-2">{t.music.songTitle}</h4>
                 <p className="text-gray-600 mb-6">
-                  作曲：AI／作詞：Y.C.L.／演唱：AI x 人類
+                  {t.music.credits}
                 </p>
 
                 <div className="relative w-full h-0 pb-[56.25%]">
@@ -307,9 +301,9 @@ const Index: React.FC = () => {
       <section className="py-20 bg-gradient-hero text-white">
         <div className="container px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">📍 馬上報名</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.cta.title}</h2>
             <p className="text-xl mb-10">
-              加入第五屆中學生黑客松，開啟屬於你的創意旅程！
+              {t.cta.subtitle}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -317,7 +311,7 @@ const Index: React.FC = () => {
                 size="lg"
                 className="bg-white text-hackathon-purple hover:bg-white/90 text-lg px-8 rounded-full flex items-center gap-2"
               >
-                線上報名表單
+                {t.cta.buttonText}
                 <ArrowRight className="h-5 w-5" />
               </Button>
               <Button
@@ -325,12 +319,12 @@ const Index: React.FC = () => {
                 size="lg"
                 className="border-white text-white hover:text-white bg-white/10 hover:bg-white/20 text-lg px-8 rounded-full"
               >
-                聯絡活動官方
+                {t.cta.contactButton}
               </Button>
             </div>
 
             <p className="mt-10 text-white/80">
-              讓我們陪你一起創作與實現！
+              {t.cta.footer}
             </p>
           </div>
         </div>
@@ -341,23 +335,19 @@ const Index: React.FC = () => {
           <div className="max-w-5xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div>
-                <h3 className="text-xl font-bold mb-2">第五屆中學生黑客松</h3>
-                <p className="text-gray-400">AI賦能 × 雲端創意</p>
+                <h3 className="text-xl font-bold mb-2">{t.hero.title}</h3>
+                <p className="text-gray-400">{t.hero.subtitle}</p>
               </div>
 
               <div className="flex flex-wrap gap-8">
                 <div>
-                  <h4 className="font-bold mb-3">相關連結</h4>
+                  <h4 className="font-bold mb-3">{t.footer.links}</h4>
                   <ul className="space-y-2">
-                    <li><a href="https://sites.google.com/k12moocs.edu.tw/hsh/%E6%AD%B7%E5%B1%86%E6%B4%BB%E5%8B%95%E5%89%AA%E5%BD%B1?authuser=0" className="text-gray-400 hover:text-white transition-colors">歷屆活動剪影</a></li>
-                    <li><a href="https://line.me/R/ti/p/@659cnniv" className="text-gray-400 hover:text-white transition-colors">LINE 官方帳號</a></li>
+                    <li><a href="https://sites.google.com/k12moocs.edu.tw/hsh/%E6%AD%B7%E5%B1%86%E6%B4%BB%E5%8B%95%E5%89%AA%E5%BD%B1?authuser=0" className="text-gray-400 hover:text-white transition-colors">{t.footer.pastEvents}</a></li>
+                    <li><a href="https://line.me/R/ti/p/@659cnniv" className="text-gray-400 hover:text-white transition-colors">{t.footer.lineAccount}</a></li>
                   </ul>
                 </div>
               </div>
-            </div>
-            
-            <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
-              <p>© {new Date().getFullYear()} 中學生黑客松組委會. All rights reserved.</p>
             </div>
           </div>
         </div>
