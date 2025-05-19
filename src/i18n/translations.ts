@@ -1,10 +1,10 @@
 export const translations = {
   ch: {
     hero: {
-      title: "第五屆中學生黑客松 賽外賽",
+      title: "第五屆中學生黑客松子賽事",
       subtitle: "AI賦能 × 雲端創意",
       description: "一起站上巨人肩膀，啟動你的創意挑戰！",
-      welcome: "歡迎全台國中、高中職學生組隊參加「第五屆中學生黑客松 賽外賽」！透過雲端資源與AI賦能，打造你的創意應用，和夥伴一起挑戰現實、連結世界！",
+      welcome: "歡迎全台國中、高中職學生組隊參加「第五屆中學生黑客松子賽事」！透過雲端資源與AI賦能，打造你的創意應用，和夥伴一起挑戰現實、連結世界！",
       discord: "加入 Discord 社群",
       learnMore: "了解更多"
     },
@@ -84,7 +84,7 @@ export const translations = {
       title: "5th HSH",
       subtitle: "AI Empowerment × Cloud Innovation",
       description: "Stand on the shoulders of giants and start your creative challenge!",
-      welcome: "Welcome all junior and senior high school students to join the \"5th HSH Hackathon External Competition\"! Create innovative applications through cloud resources and AI empowerment, challenge reality and connect with the world together!",
+      welcome: "Welcome all junior and senior high school students to join the \"5th HSH Hackathon Sub-Event\"! Create innovative applications through cloud resources and AI empowerment, challenge reality and connect with the world together!",
       discord: "Join Discord Community",
       learnMore: "Learn More"
     },
