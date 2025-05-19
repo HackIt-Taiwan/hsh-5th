@@ -11,12 +11,32 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const getLocaleFromPath = (): Locale => {
-  const path = window.location.pathname;
-  if (path.startsWith('/en')) {
-    return 'en';
+const LANGUAGE_COOKIE_NAME = 'preferred_language';
+
+// Get language from cookie or use default
+const getDefaultLocale = (): Locale => {
+  if (typeof document !== 'undefined') {
+    const cookieValue = document.cookie
+      .split('; ')
+      .find(row => row.startsWith(`${LANGUAGE_COOKIE_NAME}=`))
+      ?.split('=')[1];
+    
+    if (cookieValue === 'en' || cookieValue === 'ch') {
+      return cookieValue as Locale;
+    }
   }
+  
+  // You can use browser language or other criteria to determine default
   return 'ch';
+};
+
+// Set language cookie with 365 days expiration
+const setLanguageCookie = (locale: Locale): void => {
+  if (typeof document !== 'undefined') {
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 365);
+    document.cookie = `${LANGUAGE_COOKIE_NAME}=${locale}; expires=${expirationDate.toUTCString()}; path=/; SameSite=Lax`;
+  }
 };
 
 interface LanguageProviderProps {
@@ -24,28 +44,18 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [locale, setLocaleState] = useState<Locale>(getLocaleFromPath());
+  const [locale, setLocaleState] = useState<Locale>(getDefaultLocale());
   
+  // Set the cookie when language changes
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale);
-    
-    const currentPath = window.location.pathname;
-    const currentPathWithoutLocale = currentPath.replace(/^\/(en|ch)?/, '');
-    
-    const newPath = newLocale === 'ch' 
-      ? `${currentPathWithoutLocale}` 
-      : `/${newLocale}${currentPathWithoutLocale}`;
-    
-    window.history.pushState({}, '', newPath || '/');
+    setLanguageCookie(newLocale);
+    // No URL changes in SPA mode
   };
   
+  // Set initial cookie if not already set
   useEffect(() => {
-    const handlePopState = () => {
-      setLocaleState(getLocaleFromPath());
-    };
-    
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    setLanguageCookie(locale);
   }, []);
   
   const t = translations[locale];
