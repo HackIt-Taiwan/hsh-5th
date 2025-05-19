@@ -11,7 +11,7 @@ import news from '@/news';
 
 const Index: React.FC = () => {
   const { locale, t } = useLanguage();
-  
+
   const currentNews = locale === 'en' ? news.en : news.ch;
 
   const scrollToContent = () => {
@@ -81,8 +81,7 @@ const Index: React.FC = () => {
       <section id="announcement" className="py-16 bg-gray-50">
         <div className="container px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="section-title flex items-center gap-2">
-              <Bell className="h-8 w-8 text-hackathon-pink" />
+            <h2 className="section-title text-center">
               {t.announcement.title}
             </h2>
 
@@ -217,8 +216,10 @@ const Index: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2">{t.resources.videoTitle}</h3>
                 <p className="text-gray-600 mb-4">{t.resources.videoDesc}</p>
-                <Button variant="link" className="text-hackathon-purple mt-auto">
-                  {t.resources.videoLink} →
+                <Button variant="link" className="text-hackathon-purple mt-auto" asChild>
+                  <a href="https://tinyurl.com/hsh-2025-vid0" target="_blank">
+                    {t.resources.videoLink} →
+                  </a>
                 </Button>
               </div>
 
@@ -226,10 +227,12 @@ const Index: React.FC = () => {
                 <div className="p-4 bg-hackathon-blue/10 rounded-full mb-4">
                   <Globe className="h-6 w-6 text-hackathon-blue" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">{t.resources.workshopTitle}</h3>
-                <p className="text-gray-600 mb-4">{t.resources.workshopDesc}</p>
-                <Button variant="link" className="text-hackathon-blue mt-auto">
-                  {t.resources.workshopLink} →
+                <h3 className="text-xl font-bold mb-2">{t.resources.infoTitle}</h3>
+                <p className="text-gray-600 mb-4">{t.resources.infoDesc}</p>
+                <Button variant="link" className="text-hackathon-blue mt-auto" asChild>
+                  <a href="https://tinyurl.com/hsh-2025-4d" target="_blank">
+                    {t.resources.infoLink} →
+                  </a>
                 </Button>
               </div>
 
@@ -239,8 +242,10 @@ const Index: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2">{t.resources.awardsTitle}</h3>
                 <p className="text-gray-600 mb-4">{t.resources.awardsDesc}</p>
-                <Button variant="link" className="text-hackathon-pink mt-auto">
-                  {t.resources.awardsLink} →
+                <Button variant="link" className="text-hackathon-blue mt-auto" asChild>
+                  <a href="https://tinyurl.com/hsh-2025-awards" target="_blank">
+                    {t.resources.awardsLink} →
+                  </a>
                 </Button>
               </div>
             </div>
