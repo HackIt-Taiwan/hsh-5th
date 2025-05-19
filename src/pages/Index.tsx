@@ -46,7 +46,7 @@ const Index: React.FC = () => {
 
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             {t.hero.title}
-            <span className="block text-hackathon-yellow">{t.hero.subtitle}</span>
+            <span className="block text-hackathon-yellow mt-4">{t.hero.subtitle}</span>
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
