@@ -78,7 +78,7 @@ const Index: React.FC = () => {
         </div>
       </div>
 
-      <section id="announcement" className="py-16 bg-white">
+      <section id="announcement" className="py-16 bg-gray-50">
         <div className="container px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="section-title flex items-center gap-2">
@@ -107,7 +107,7 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50 tech-pattern">
+      <section className="py-16 bg-gray-50">
         <div className="container px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="section-title text-center mb-10">
@@ -115,7 +115,7 @@ const Index: React.FC = () => {
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white p-6 rounded-2xl shadow-sm transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-hackathon-purple/10 rounded-xl">
                     <Users className="h-7 w-7 text-hackathon-purple" />
@@ -127,7 +127,7 @@ const Index: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white p-6 rounded-2xl shadow-sm transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-hackathon-blue/10 rounded-xl">
                     <FileText className="h-7 w-7 text-hackathon-blue" />
@@ -141,7 +141,7 @@ const Index: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white p-6 rounded-2xl shadow-sm transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-hackathon-orange/10 rounded-xl">
                     <FileCheck className="h-7 w-7 text-hackathon-orange" />
@@ -153,7 +153,7 @@ const Index: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white p-6 rounded-2xl shadow-sm transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-hackathon-pink/10 rounded-xl">
                     <FileWarning className="h-7 w-7 text-hackathon-pink" />
@@ -199,7 +199,7 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="container px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="section-title text-center mb-3">
@@ -270,7 +270,7 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 tech-pattern">
         <div className="container px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
@@ -310,16 +310,22 @@ const Index: React.FC = () => {
               <Button
                 size="lg"
                 className="bg-white text-hackathon-purple hover:bg-white/90 text-lg px-8 rounded-full flex items-center gap-2"
+                asChild
               >
-                {t.cta.buttonText}
-                <ArrowRight className="h-5 w-5" />
+                <a href="https://discord.gg/KGwQxZqp9z" target="_blank">
+                  {t.cta.buttonText}
+                  <ArrowRight className="h-5 w-5" />
+                </a>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 className="border-white text-white hover:text-white bg-white/10 hover:bg-white/20 text-lg px-8 rounded-full"
+                asChild
               >
-                {t.cta.contactButton}
+                <a href="https://line.me/R/ti/p/@659cnniv" target="_blank">
+                  {t.cta.contactButton}
+                </a>
               </Button>
             </div>
 

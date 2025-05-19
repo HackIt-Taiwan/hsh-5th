@@ -68,8 +68,8 @@ export const translations = {
     cta: {
       title: "📍 馬上報名",
       subtitle: "加入第五屆中學生黑客松，開啟屬於你的創意旅程！",
-      buttonText: "線上報名表單",
-      contactButton: "聯絡活動官方",
+      buttonText: "加入 Discord 社群",
+      contactButton: "LINE 官方帳號",
       footer: "讓我們陪你一起創作與實現！"
     },
     footer: {
@@ -148,8 +148,8 @@ export const translations = {
     cta: {
       title: "📍 Register Now",
       subtitle: "Join the 5th Student Hackathon and embark on your creative journey!",
-      buttonText: "Online Registration Form",
-      contactButton: "Contact Official Team",
+      buttonText: "Join Discord Community",
+      contactButton: "Contact LINE Official Account",
       footer: "Let us accompany you in creating and realizing your ideas!"
     },
     footer: {
